@@ -25,6 +25,49 @@ class Clube
         echo json_encode($response);
     }
 
+    static function getAllClubsSimpleImages()
+    {
+        $query = "SELECT id as Clube_ID, imagem as Escudo FROM clube";
+        $conn = Conexao::conectar();
+        $stmt = $conn->prepare($query);
+        $stmt->execute();
+        $times = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // Configuração do cabeçalho para permitir acesso a partir de qualquer origem (CORS)
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json; charset=UTF-8");
+
+        // Defina a resposta HTTP para 200 OK
+        http_response_code(200);
+
+        // Crie um array associativo com os clubes
+        $response = ['clubes' => $times];
+
+        // Converta o array em formato JSON
+        echo json_encode($response);
+    }
+
+    static function getClubImageById($id)
+    {
+        $query = "SELECT imagem as Escudo FROM clube WHERE id = :id";
+        $conn = Conexao::conectar();
+        $stmt = $conn->prepare($query);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        $times = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // Configuração do cabeçalho para permitir acesso a partir de qualquer origem (CORS)
+        header("Access-Control-Allow-Origin: *");
+        header("Content-Type: application/json; charset=UTF-8");
+
+        // Defina a resposta HTTP para 200 OK
+        http_response_code(200);
+
+        // Crie um array associativo com os clubes
+        $response = ['clubes' => $times];
+
+        // Converta o array em formato JSON
+        echo json_encode($response);
+    }
+
     static function getAllClubs()
     {
         $query = "
