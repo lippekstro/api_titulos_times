@@ -22,7 +22,7 @@ class Clube
         $response = ['clubes' => $times];
 
         // Converta o array em formato JSON
-        echo json_encode($response);
+        echo json_encode($response, JSON_PRETTY_PRINT);
     }
 
     static function getAllClubsSimpleImages()
@@ -43,7 +43,7 @@ class Clube
         $response = ['clubes' => $times];
 
         // Converta o array em formato JSON
-        echo json_encode($response);
+        echo json_encode($response, JSON_PRETTY_PRINT);
     }
 
     static function getClubImageById($id)
@@ -65,7 +65,7 @@ class Clube
         $response = ['clubes' => $times];
 
         // Converta o array em formato JSON
-        echo json_encode($response);
+        echo json_encode($response, JSON_PRETTY_PRINT);
     }
 
     static function getAllClubs()
@@ -135,7 +135,7 @@ class Clube
         $response = ['clubes' => $clubes];
 
         // Converta o array em formato JSON
-        echo json_encode($response);
+        echo json_encode($response, JSON_PRETTY_PRINT);
     }
 
     static function getClubById($id)
@@ -208,6 +208,6 @@ class Clube
         $response = ['clubes' => $clubes];
 
         // Converta o array em formato JSON
-        echo json_encode($response);
+        echo json_encode($response, JSON_PRETTY_PRINT);
     }
 }
